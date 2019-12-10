@@ -125,7 +125,7 @@ export class RequestInterceptor {
     private async blockUrl(interceptedRequest: Request): Promise<void> {
         let urlAccessor: UrlAccessor = this.getUrlAccessor(interceptedRequest);
         try {
-            await interceptedRequest.abort();
+            await interceptedRequest.abort('aborted');
             this.logger.log(`aborted: ${urlAccessor.getUrlFromRequest(interceptedRequest)}`);
         } catch (error) {
             this.logger.log((<Error> error).toString());
